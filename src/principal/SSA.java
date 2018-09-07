@@ -22,7 +22,7 @@ public class SSA extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/visao/Principal.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/visao/Administrativo.fxml"));
         
         Scene scene = new Scene(root);
         
