@@ -10,6 +10,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.StageStyle;
 
 /**
  *
@@ -24,7 +27,18 @@ public class SSA extends Application {
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
+        
+        VBox rootLogin = new FXMLLoader(getClass().getResource("/visao/Login.fxml")).load();
+        Scene sceneLogin = new Scene(rootLogin);
+        
+        Stage stageLogin = new Stage(StageStyle.TRANSPARENT);
+        stageLogin.initModality(Modality.APPLICATION_MODAL);
+
+        stageLogin.initOwner(stage);
+        stageLogin.setScene(sceneLogin);
+        
         stage.show();
+        stageLogin.show();
     }
 
     /**
