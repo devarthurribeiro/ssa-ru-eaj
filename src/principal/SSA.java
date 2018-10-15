@@ -23,7 +23,7 @@ public class SSA extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/visao/Administrativo.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/visao/Login.fxml"));
         
         Scene scene = new Scene(root);
         
@@ -32,19 +32,19 @@ public class SSA extends Application {
         VBox rootLogin = new FXMLLoader(getClass().getResource("/visao/Login.fxml")).load();
         Scene sceneLogin = new Scene(rootLogin);
         
-        Stage stageLogin = new Stage(StageStyle.TRANSPARENT);
-        stageLogin.initModality(Modality.APPLICATION_MODAL);
-        stageLogin.centerOnScreen();
+        //Stage stageLogin = new Stage(StageStyle.TRANSPARENT);
+        //stageLogin.initModality(Modality.APPLICATION_MODAL);
+        //stageLogin.centerOnScreen();
         
-        stageLogin.initOwner(stage);
-        stageLogin.setScene(sceneLogin);
+        //stageLogin.initOwner(stage);
+        //stageLogin.setScene(sceneLogin);
         
         stage.centerOnScreen();
-        stage.setHeight(Screen.getPrimary().getVisualBounds().getHeight());
-        stage.setWidth(Screen.getPrimary().getVisualBounds().getWidth());
+        //stage.setHeight(Screen.getPrimary().getVisualBounds().getHeight());
+        //stage.setWidth(Screen.getPrimary().getVisualBounds().getWidth());
         
         stage.show();
-        stageLogin.show();
+        //stageLogin.show();
     }
 
     /**
