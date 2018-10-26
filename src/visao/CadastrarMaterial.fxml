@@ -39,9 +39,8 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
          <children>
-            <JFXButton buttonType="RAISED" style="-fx-background-color: #3ABA7B;" text="Cadastrar" textFill="WHITE" />
-            <JFXButton buttonType="RAISED" style="-fx-background-color: #3ABA7B;" text="Editar" textFill="WHITE" />
-            <JFXButton buttonType="RAISED" layoutX="274.0" layoutY="24.0" text="Remover" textFill="RED" />
+            <JFXButton buttonType="RAISED" style="-fx-background-color: #3ABA7B;" text="Salvar" textFill="WHITE" />
+            <JFXButton buttonType="RAISED" layoutX="274.0" layoutY="24.0" text="Cancelar" textFill="RED" />
          </children>
       </HBox>
    </bottom>
