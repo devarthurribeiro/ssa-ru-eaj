@@ -13,22 +13,12 @@
    <center>
       <VBox alignment="CENTER" prefHeight="396.0" prefWidth="428.0" spacing="30.0" style="-fx-background-color: #fff;" BorderPane.alignment="CENTER">
          <children>
-            <JFXTextField focusColor="DARKSLATEGRAY" labelFloat="true" prefHeight="30.0" prefWidth="340.0" promptText="Nome" unFocusColor="DARKSLATEGRAY">
+            <JFXTextField focusColor="DARKSLATEGRAY" labelFloat="true" prefHeight="30.0" prefWidth="340.0" promptText="Desrição" unFocusColor="DARKSLATEGRAY">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </JFXTextField>
-            <JFXTextField focusColor="DARKSLATEGRAY" labelFloat="true" promptText="E-mail" unFocusColor="DARKSLATEGRAY">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </JFXTextField>
-            <JFXTextField focusColor="DARKSLATEGRAY" labelFloat="true" layoutX="10.0" layoutY="116.0" prefHeight="30.0" prefWidth="340.0" promptText="Senha" unFocusColor="DARKSLATEGRAY">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </JFXTextField>
-            <JFXTextField focusColor="DARKSLATEGRAY" labelFloat="true" promptText="Telefone" unFocusColor="DARKSLATEGRAY">
+            <JFXTextField focusColor="DARKSLATEGRAY" labelFloat="true" promptText="Disponível" unFocusColor="DARKSLATEGRAY">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -37,7 +27,7 @@
       </VBox>
    </center>
    <top>
-      <Label text="Cadastro de Usuários" BorderPane.alignment="CENTER">
+      <Label text="Cadastro de Alimentos" BorderPane.alignment="CENTER">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
