@@ -5,25 +5,33 @@ package modelo;
  * @author Arthur Ribeiro
  */
 public class Setor {
+    private int id;
     private String nome;
-    private String Responsavel;
 
+    public Setor() {
+    }
+
+    public Setor(int id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
+
+    public Setor(String nome) {
+        this.nome = nome;
+    }
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     public String getNome() {
         return nome;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getResponsavel() {
-        return Responsavel;
-    }
-
-    public void setResponsavel(String Responsavel) {
-        this.Responsavel = Responsavel;
-    }
-    
-    
-    
+    }  
 }
