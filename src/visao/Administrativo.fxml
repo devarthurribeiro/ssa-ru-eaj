@@ -12,11 +12,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="512.0" prefWidth="768.0" style="-fx-background-color: #EEE9E9;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.ControleAdministrativo">
+<BorderPane fx:id="borderpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="512.0" prefWidth="768.0" style="-fx-background-color: #EEE9E9;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.ControleAdministrativo">
    <left>
       <VBox accessibleRole="IMAGE_VIEW" cache="true" nodeOrientation="LEFT_TO_RIGHT" prefHeight="617.0" prefWidth="250.0" spacing="10.0" style="-fx-background-color: #FFFFF0;" BorderPane.alignment="CENTER">
          <children>
-            <JFXButton accessibleRole="IMAGE_VIEW" alignment="TOP_LEFT" prefHeight="42.0" prefWidth="250.0" text="Cadastro Usuários" textFill="DARKSLATEGRAY">
+            <JFXButton fx:id="ListaUsuarios" accessibleRole="IMAGE_VIEW" alignment="TOP_LEFT" onAction="#abrirTela" prefHeight="42.0" prefWidth="250.0" text="Cadastro Usuários" textFill="DARKSLATEGRAY">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
@@ -28,7 +28,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="TOP_LEFT" prefHeight="42.0" prefWidth="250.0" text="cadastro Setores" textFill="DARKSLATEGRAY">
+            <JFXButton fx:id="ListaSetores" alignment="TOP_LEFT" onAction="#abrirTela" prefHeight="42.0" prefWidth="250.0" text="cadastro Setores" textFill="DARKSLATEGRAY">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
@@ -40,7 +40,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="TOP_LEFT" prefHeight="42.0" prefWidth="250.0" text="Cadastro Alimentos" textFill="DARKSLATEGRAY">
+            <JFXButton fx:id="ListaMaterial" alignment="TOP_LEFT" onAction="#abrirTela" prefHeight="42.0" prefWidth="250.0" text="Cadastro Alimentos" textFill="DARKSLATEGRAY">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
