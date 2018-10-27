@@ -9,6 +9,8 @@ public class Material {
     private String descricao;
     private boolean disponivel;
 
+    public Material() {
+    }
     public Material(String descricao, boolean disponivel) {
         this.descricao = descricao;
         this.disponivel = disponivel;

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import modelo.Material;
 import modelo.MaterialDAO;
+import modelo.Setor;
 /**
  *
  * @author arthur
@@ -85,7 +86,24 @@ public class MaterialDbDAO extends Database implements MaterialDAO {
 
     @Override
     public Material findById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        open();
+        Material materail = new Material();
+        String query = "SELECT * FROM material WHERE id = ?;";
+        try {
+            PreparedStatement pst = connection.prepareStatement(query);
+            pst.setInt(1, id);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                materail.setId(rs.getInt("id"));
+                materail.setDescricao(rs.getString("descricao").trim());
+            }
+
+        } catch (SQLException e) {
+             System.err.println("Erro ao procurar material: " + id + e.getMessage());
+        } finally {
+            close();
+        }
+        return materail;
     }
 
 }

@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import modelo.Material;
 import modelo.Setor;
 import modelo.SetorDAO;
 
@@ -98,7 +97,7 @@ public class SetorDbDAO extends Database implements SetorDAO{
             }
 
         } catch (SQLException e) {
-             System.err.println("Erro ao procurar a baia: " + id + e.getMessage());
+             System.err.println("Erro ao procurar setor: " + id + e.getMessage());
         } finally {
             close();
         }
