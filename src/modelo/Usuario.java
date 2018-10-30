@@ -1,14 +1,52 @@
 package modelo;
 
+import java.util.List;
+import modelo.db.UsuarioDbDAO;
+
 /**
  *
  * @author Arthur Ribeiro
  */
 public class Usuario {
+
+    private int id;
     private String nome;
     private String email;
     private String senha;
     private String telefone;
+    private boolean admin;
+    private Setor setor;
+    private static UsuarioDbDAO dao = new UsuarioDbDAO();
+
+    public Usuario() {
+    }
+
+    public Usuario(String nome, String email, String senha, String telefone, boolean admin, Setor setor) {
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.telefone = telefone;
+        this.admin = admin;
+        this.setor = setor;
+    }
+
+    public Usuario(int id, String nome, String email, String senha, String telefone, boolean admin, Setor setor) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.telefone = telefone;
+        this.admin = admin;
+        this.setor = setor;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
@@ -41,6 +79,40 @@ public class Usuario {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
+
+    public Setor getSetor() {
+        return setor;
+    }
+
+    public void setSetor(Setor setor) {
+        this.setor = setor;
+    }
+
+    public static List<Usuario> all() {
+        return dao.all();
+    }
+
+    public void save() {
+        if (id != 0) {
+            dao.update(this);
+        } else {
+            dao.create(this);
+        }
+    }
+
+    public void delete() {
+        dao.delete(this);
+    }
     
-    
+    public static Usuario findById(int id) {
+        return dao.findById(id);
+    }
 }
