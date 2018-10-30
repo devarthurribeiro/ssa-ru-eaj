@@ -1,27 +1,33 @@
 package modelo;
 
+import java.util.List;
+import modelo.db.AlimentoDbDAO;
+
 /**
  *
  * @author Arthur Ribeiro
  */
-public class Material {
+public class Alimento {
+
     private int id;
     private String descricao;
     private boolean disponivel;
+    private static AlimentoDbDAO dao = new AlimentoDbDAO();
 
-    public Material() {
+    public Alimento() {
     }
-    public Material(String descricao, boolean disponivel) {
+
+    public Alimento(String descricao, boolean disponivel) {
         this.descricao = descricao;
         this.disponivel = disponivel;
     }
 
-    public Material(int id, String descricao, boolean disponivel) {
+    public Alimento(int id, String descricao, boolean disponivel) {
         this.id = id;
         this.descricao = descricao;
         this.disponivel = disponivel;
     }
-    
+
     public int getId() {
         return id;
     }
@@ -29,6 +35,7 @@ public class Material {
     public void setId(int id) {
         this.id = id;
     }
+
     public String getDescricao() {
         return descricao;
     }
@@ -44,5 +51,24 @@ public class Material {
     public void setDisponivel(boolean disponivel) {
         this.disponivel = disponivel;
     }
-    
+
+    public static List<Alimento> all() {
+        return dao.all();
+    }
+
+    public void save() {
+        if (id != 0) {
+            dao.update(this);
+        } else {
+            dao.create(this);
+        }
+    }
+
+    public void delete() {
+        dao.delete(this);
+    }
+
+    public static Alimento findById(int id) {
+        return dao.findById(id);
+    }
 }
