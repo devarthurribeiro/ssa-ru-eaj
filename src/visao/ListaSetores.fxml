@@ -16,9 +16,12 @@
          <children>
             <TableView prefHeight="298.0" prefWidth="404.0">
               <columns>
+                <TableColumn prefWidth="75.0" text="Codigo" />
                 <TableColumn prefWidth="75.0" text="Nome" />
-                <TableColumn prefWidth="75.0" text="Responsável" />
               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
             </TableView>
          </children>
       </VBox>

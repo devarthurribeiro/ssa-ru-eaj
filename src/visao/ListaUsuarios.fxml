@@ -21,6 +21,9 @@
                   <TableColumn prefWidth="75.0" text="Senha" />
                   <TableColumn prefWidth="75.0" text="Telefone" />
               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
             </TableView>
          </children>
       </VBox>

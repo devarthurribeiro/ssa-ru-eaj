@@ -19,6 +19,9 @@
                 <TableColumn prefWidth="75.0" text="Descrição" />
                 <TableColumn prefWidth="75.0" text="Disponível" />
               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
             </TableView>
          </children>
       </VBox>
