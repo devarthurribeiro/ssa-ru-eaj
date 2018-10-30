@@ -5,22 +5,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import modelo.Material;
-import modelo.MaterialDAO;
-import modelo.Setor;
+import modelo.Alimento;
+import modelo.AlimentoDAO;
 /**
  *
  * @author arthur
  */
-public class MaterialDbDAO extends Database implements MaterialDAO {
+public class AlimentoDbDAO extends Database implements AlimentoDAO {
 
     @Override
-    public void create(Material material) {
+    public void create(Alimento alimento) {
         open();
-        String query = "INSERT INTO material(descricao) VALUES (?);";
+        String query = "INSERT INTO alimento(descricao) VALUES (?);";
         try {
             PreparedStatement pst = connection.prepareStatement(query);
-            pst.setString(1, material.getDescricao());
+            pst.setString(1, alimento.getDescricao());
             pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println("Erro ao criar o porco! " + e.getMessage());
@@ -30,41 +29,41 @@ public class MaterialDbDAO extends Database implements MaterialDAO {
     }
 
     @Override
-    public void delete(Material material) {
+    public void delete(Alimento alimento) {
         open();
-        String query = "DELETE FROM material WHERE id = ?;";
+        String query = "DELETE FROM alimento WHERE id = ?;";
         try {
             PreparedStatement pst = connection.prepareStatement(query);
-            pst.setInt(1, material.getId());
+            pst.setInt(1, alimento.getId());
             pst.executeUpdate();
         } catch (SQLException e) {
-            System.err.println("Erro ao deletar a material " + material.getId()+ ":" + e.getMessage());
+            System.err.println("Erro ao deletar a alimento " + alimento.getId()+ ":" + e.getMessage());
         } finally {
             close();
         }
     }
 
     @Override
-    public void update(Material material) {
+    public void update(Alimento alimento) {
         open();
-        String query = "UPDATE material SET descricao = ?, disponivel = ? WHERE id = ?;";
+        String query = "UPDATE alimento SET descricao = ?, disponivel = ? WHERE id = ?;";
         try {
             PreparedStatement pst = connection.prepareStatement(query);
-            pst.setString(1, material.getDescricao());
-            pst.setBoolean(2, material.isDisponivel());
+            pst.setString(1, alimento.getDescricao());
+            pst.setBoolean(2, alimento.isDisponivel());
             pst.executeUpdate();
         } catch (SQLException e) {
-            System.err.println("Erro ao atualizar o materiais: " + material.getId()+ e.getMessage());
+            System.err.println("Erro ao atualizar o materiais: " + alimento.getId()+ e.getMessage());
         } finally {
             close();
         }
     }
 
     @Override
-    public List<Material> all() {
+    public List<Alimento> all() {
         open();
-        ArrayList<Material> materialList = new ArrayList<>();
-        String query = "SELECT * FROM material;";
+        ArrayList<Alimento> alimentoList = new ArrayList<>();
+        String query = "SELECT * FROM alimento;";
         try {
             PreparedStatement pst = connection.prepareStatement(query);
             ResultSet rs = pst.executeQuery();
@@ -72,8 +71,8 @@ public class MaterialDbDAO extends Database implements MaterialDAO {
                 int id = rs.getInt("id");
                 String desc = rs.getString("descricao").trim();
                 boolean disponivel = rs.getBoolean("disponivel");
-                Material m = new Material(id, desc, disponivel);
-                materialList.add(m);
+                Alimento m = new Alimento(id, desc, disponivel);
+                alimentoList.add(m);
             }
 
         } catch (SQLException e) {
@@ -81,14 +80,14 @@ public class MaterialDbDAO extends Database implements MaterialDAO {
         } finally {
             close();
         }
-        return materialList;
+        return alimentoList;
     }
 
     @Override
-    public Material findById(int id) {
+    public Alimento findById(int id) {
         open();
-        Material materail = new Material();
-        String query = "SELECT * FROM material WHERE id = ?;";
+        Alimento materail = new Alimento();
+        String query = "SELECT * FROM alimento WHERE id = ?;";
         try {
             PreparedStatement pst = connection.prepareStatement(query);
             pst.setInt(1, id);
@@ -99,7 +98,7 @@ public class MaterialDbDAO extends Database implements MaterialDAO {
             }
 
         } catch (SQLException e) {
-             System.err.println("Erro ao procurar material: " + id + e.getMessage());
+             System.err.println("Erro ao procurar alimento: " + id + e.getMessage());
         } finally {
             close();
         }

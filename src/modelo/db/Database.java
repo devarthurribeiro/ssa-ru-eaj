@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo.db;
 
 import java.sql.Connection;
@@ -20,7 +15,7 @@ public class Database {
     protected Connection connection;
     private String url = "jdbc:postgresql://localhost:5432/ssadb";
     private String user = "postgres";
-    private String password = "root";
+    private String password = "postgres";
 
     public void open() {
         try {
