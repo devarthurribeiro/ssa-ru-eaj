@@ -93,7 +93,7 @@ public class SetorDbDAO extends Database implements SetorDAO {
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
                 setor.setId(rs.getInt("id"));
-                setor.setNome(rs.getString("nome");
+                setor.setNome(rs.getString("nome"));
             }
 
         } catch (SQLException e) {
