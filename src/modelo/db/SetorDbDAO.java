@@ -12,7 +12,7 @@ import modelo.SetorDAO;
  *
  * @author arthur
  */
-public class SetorDbDAO extends Database implements SetorDAO{
+public class SetorDbDAO extends Database implements SetorDAO {
 
     @Override
     public void create(Setor setor) {
@@ -38,7 +38,7 @@ public class SetorDbDAO extends Database implements SetorDAO{
             pst.setInt(1, setor.getId());
             pst.executeUpdate();
         } catch (SQLException e) {
-            System.err.println("Erro ao deletar a material " + setor.getId()+ ":" + e.getMessage());
+            System.err.println("Erro ao deletar a material " + setor.getId() + ":" + e.getMessage());
         } finally {
             close();
         }
@@ -53,7 +53,7 @@ public class SetorDbDAO extends Database implements SetorDAO{
             pst.setString(1, setor.getNome());
             pst.executeUpdate();
         } catch (SQLException e) {
-            System.err.println("Erro ao atualizar o setor: " + setor.getId()+ e.getMessage());
+            System.err.println("Erro ao atualizar o setor: " + setor.getId() + e.getMessage());
         } finally {
             close();
         }
@@ -93,15 +93,15 @@ public class SetorDbDAO extends Database implements SetorDAO{
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
                 setor.setId(rs.getInt("id"));
-                setor.setNome(rs.getString("nome").trim());
+                setor.setNome(rs.getString("nome");
             }
 
         } catch (SQLException e) {
-             System.err.println("Erro ao procurar setor: " + id + e.getMessage());
+            System.err.println("Erro ao procurar setor: " + id + e.getMessage());
         } finally {
             close();
         }
         return setor;
     }
-    
+
 }

@@ -1,12 +1,17 @@
 package modelo;
 
+import java.util.List;
+import modelo.db.SetorDbDAO;
+
 /**
  *
  * @author Arthur Ribeiro
  */
 public class Setor {
+
     private int id;
     private String nome;
+    private static SetorDbDAO dao = new SetorDbDAO();
 
     public Setor() {
     }
@@ -19,7 +24,7 @@ public class Setor {
     public Setor(String nome) {
         this.nome = nome;
     }
-    
+
     public int getId() {
         return id;
     }
@@ -27,11 +32,32 @@ public class Setor {
     public void setId(int id) {
         this.id = id;
     }
+
     public String getNome() {
         return nome;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
-    }  
+    }
+
+    public static List<Setor> all() {
+        return dao.all();
+    }
+
+    public void save() {
+        if (id != 0) {
+            dao.update(this);
+        } else {
+            dao.create(this);
+        }
+    }
+
+    public void delete() {
+        dao.delete(this);
+    }
+
+    public static Setor findById(int id) {
+        return dao.findById(id);
+    }
 }
