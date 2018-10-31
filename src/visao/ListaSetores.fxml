@@ -40,7 +40,6 @@
          </padding>
          <children>
             <JFXButton buttonType="RAISED" style="-fx-background-color: #3ABA7B;" text="Relatório" textFill="WHITE" />
-            <JFXButton buttonType="RAISED" layoutX="274.0" layoutY="24.0" style="-fx-background-color: #3ABA7B;" text="Salvar" textFill="WHITE" />
             <JFXButton buttonType="RAISED" layoutX="274.0" layoutY="24.0" style="-fx-background-color: #3ABA7B;" text="Editar" textFill="WHITE" />
             <JFXButton buttonType="RAISED" layoutX="356.0" layoutY="24.0" text="Remover" textFill="RED" />
          </children>
