@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+
+<VBox alignment="CENTER" prefHeight="400.0" prefWidth="697.0" spacing="16.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.ControleSobre">
+   <children>
+      <Label text="SSA - SISTEMA DE SOLICITAÇAO DE ALIMENTOS">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <TextFlow prefHeight="45.0" prefWidth="697.0" textAlignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sistema desenvolvido para auxiliar a solicitação de alimentos ao Restaurante Universitário (RU) na EAJ-UFRN. Como trabalho acadêmico na materia de programação orientada a objeto." />
+         </children>
+      </TextFlow>
+      <TextFlow prefHeight="13.0" prefWidth="697.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Autores:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </TextFlow>
+      <TextFlow prefHeight="16.0" prefWidth="697.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Arthur Ribeiro | devarthurribeiro@gmail.com" />
+         </children>
+      </TextFlow>
+      <TextFlow layoutX="10.0" layoutY="257.0" prefHeight="45.0" prefWidth="697.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Onildo Braga | onildobr@gmail.com" wrappingWidth="231.3466796875" />
+         </children>
+      </TextFlow>
+   </children>
+</VBox>

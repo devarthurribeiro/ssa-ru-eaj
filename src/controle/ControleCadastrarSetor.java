@@ -1,30 +1,45 @@
 package controle;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
+import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+import modelo.Setor;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  *
  * @author ONILDO
  */
 public class ControleCadastrarSetor implements Initializable {
-    
-    //@FXML
-    //private Label label;
-    
-    //@FXML
-    //private void handleButtonAction(ActionEvent event) {
-        //System.out.println("You clicked me!");
-        //label.setText("Hello World!");
-   // }
-    
+    private Setor setor;
+    @FXML
+    private VBox container;
+    @FXML
+    private JFXTextField nome;
+    @FXML
+    private void cancelar() {
+        container.getScene().getWindow().hide();
+    }
+    @FXML
+    private void salvar() {
+        if(setor == null) {
+            setor = new Setor();
+        }
+
+        setor.setNome(nome.getText());
+        setor.save();
+
+        nome.setText("");
+        cancelar();
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
     }    
-    
+    public void setSetor(Setor s) {
+        setor = s;
+        nome.setText(setor.getNome());
+    }
 }

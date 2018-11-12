@@ -1,7 +1,8 @@
 package modelo;
 
 import java.util.List;
-import modelo.db.AlimentoDbDAO;
+
+import modelo.db.AlimentoDAO;
 
 /**
  *
@@ -12,7 +13,7 @@ public class Alimento {
     private int id;
     private String descricao;
     private boolean disponivel;
-    private static AlimentoDbDAO dao = new AlimentoDbDAO();
+    private static AlimentoDAO dao = new AlimentoDAO();
 
     public Alimento() {
     }

@@ -1,36 +1,63 @@
 package controle;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import com.jfoenix.controls.JFXButton;
+import javafx.scene.layout.VBox;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 /**
  *
  * @author ONILDO
  */
 public class ControleAdministrativo implements Initializable {
-    
+
+    private JFXButton btn;
+    @FXML
+    private  JFXButton Principal;
     @FXML
     private BorderPane borderpane;
-    @FXML 
-    private void abrirTela(ActionEvent event) throws IOException {
-        JFXButton btn = (JFXButton) event.getSource();
+    @FXML
+    private AnchorPane paneCenter;
+    @FXML
+    private VBox containerPrincipal;
+
+    @FXML
+    private void abrirTela(ActionEvent event) {
+        if (btn != null) {
+            btn.getStyleClass().removeAll("active");
+        }
+        btn = (JFXButton) event.getSource();
+        btn.getStyleClass().add("active");
         String id = btn.getId();
         System.out.println(id);
-        open("/visao/"+id+".fxml");
+        open("/visao/" + id + ".fxml");
+    }
+    @FXML
+    public void sair() {
+        System.exit(0);
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    public void open(String formName) throws IOException {
-        Parent form = FXMLLoader.load(getClass().getResource(formName));
-        borderpane.setCenter(form);
+        open("/visao/Principal.fxml");
+        btn = Principal;
+        btn.getStyleClass().add("active");
+    }
+
+    public void open(String formName) {
+        try {
+            Parent form = FXMLLoader.load(getClass().getResource(formName));
+            containerPrincipal.getChildren().setAll(form);
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
     }
 }

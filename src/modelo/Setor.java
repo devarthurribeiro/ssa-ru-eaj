@@ -1,7 +1,9 @@
 package modelo;
 
 import java.util.List;
-import modelo.db.SetorDbDAO;
+
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import modelo.db.SetorDAO;
 
 /**
  *
@@ -11,7 +13,7 @@ public class Setor {
 
     private int id;
     private String nome;
-    private static SetorDbDAO dao = new SetorDbDAO();
+    private static SetorDAO dao = new SetorDAO();
 
     public Setor() {
     }

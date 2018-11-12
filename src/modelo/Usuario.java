@@ -1,7 +1,8 @@
 package modelo;
 
 import java.util.List;
-import modelo.db.UsuarioDbDAO;
+
+import modelo.db.UsuarioDAO;
 
 /**
  *
@@ -16,7 +17,7 @@ public class Usuario {
     private String telefone;
     private boolean admin;
     private Setor setor;
-    private static UsuarioDbDAO dao = new UsuarioDbDAO();
+    private static UsuarioDAO dao = new UsuarioDAO();
 
     public Usuario() {
     }

@@ -1,5 +1,7 @@
 package modelo;
 
+import modelo.db.SolicitacaoDAO;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,6 +19,8 @@ public class Solicitacao {
     private String observacao;
     private boolean arquivada;
     private List<Alimento> Alimentos = new ArrayList<Alimento>();
+
+    private SolicitacaoDAO dao = new SolicitacaoDAO();
 
     public Solicitacao() {
     }

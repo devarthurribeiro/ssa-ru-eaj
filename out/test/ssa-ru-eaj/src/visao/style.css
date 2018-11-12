@@ -1,0 +1,44 @@
+.bg-default {
+   -fx-background-color:  #EEE9E9;
+}
+
+.btn {
+    -fx-background-radius: 30;
+
+}
+
+.btn-success {
+    -fx-background-color:  #00c552;
+}
+
+.btn-success-line {
+    -fx-text-fill: #00c552;
+    -fx-border-color: #00c552;
+    -fx-border-radius: 16;
+}
+
+.btn-info {
+    -fx-background-color: #6579ee;
+}
+
+.btn-danger {
+    -fx-background-color:  #ff3535;
+}
+
+.card {
+    -fx-background-color:  #fff;
+    -fx-margin:  16px;
+    -fx-background-radius: 4;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 0);
+}
+
+.side-menu-item {
+    -fx-background-radius: 10;
+}
+    
+.side-menu-item.active {
+    -fx-background-color: #6370DF;
+    -fx-text-fill: #fff;
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+}
