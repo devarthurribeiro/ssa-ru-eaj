@@ -5,7 +5,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javafx.scene.control.Alert;
 import modelo.Setor;
+import util.AlertBox;
 
 /**
  *
@@ -21,6 +24,7 @@ public class SetorDAO extends Database {
             pst.setString(1, setor.getNome());
             pst.executeUpdate();
         } catch (SQLException e) {
+            new AlertBox("Erro ao criar o setor! ", "Erro", new Alert(Alert.AlertType.ERROR));
             System.err.println("Erro ao criar o setor! " + e.getMessage());
         } finally {
             close();
