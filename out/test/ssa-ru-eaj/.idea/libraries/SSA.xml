@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="SSA">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/dist/SSA.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
