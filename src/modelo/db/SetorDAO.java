@@ -17,7 +17,7 @@ public class SetorDAO extends Database {
 
     public void create(Setor setor) {
         open();
-        String query = "INSERT INTO setor(nomea) VALUES (?);";
+        String query = "INSERT INTO setor(nome) VALUES (?);";
         try {
             PreparedStatement pst = connection.prepareStatement(query);
             pst.setString(1, setor.getNome());
