@@ -9,7 +9,7 @@ import java.util.ResourceBundle;
  *
  * @author ONILDO
  */
-public class ControleCadastrarUsuarios implements Initializable {
+public class ControleCadastrarUsuario implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

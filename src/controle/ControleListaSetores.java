@@ -1,6 +1,5 @@
 package controle;
 
-import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfPTable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,7 +17,6 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import modelo.Setor;
 import util.Report;
-import util.utilControle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -34,14 +32,14 @@ public class ControleListaSetores implements Initializable {
 
     @FXML
     private void cadastrar(ActionEvent event) throws IOException {
-        Parent parent = FXMLLoader.load(getClass().getResource("/visao/CadastrarSetor.fxml"));
+        Parent parent = FXMLLoader.load(getClass().getResource("/visao/CadastroSetor.fxml"));
         abrirCadastro(parent, "Cadastrar setor");
     }
 
     @FXML
     private void editar() throws IOException {
         Setor setor = tabela.getSelectionModel().getSelectedItem();
-        FXMLLoader loader = new  FXMLLoader(getClass().getResource("/visao/CadastrarSetor.fxml"));
+        FXMLLoader loader = new  FXMLLoader(getClass().getResource("/visao/CadastroSetor.fxml"));
         Parent parent = loader.load();
         ControleCadastrarSetor controller = loader.getController();
         controller.setSetor(setor);

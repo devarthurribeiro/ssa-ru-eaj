@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
  *
  * @author ONILDO
  */
-public class ControleListaMaterial extends utilControle implements Initializable {
+public class ControleListaAlimentos extends utilControle implements Initializable {
 
     @FXML
     private void abrirFormulario(ActionEvent event) {
