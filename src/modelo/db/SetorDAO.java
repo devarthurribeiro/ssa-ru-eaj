@@ -1,31 +1,29 @@
 package modelo.db;
 
+import javafx.scene.control.Alert;
+import modelo.Setor;
+import util.AlertBox;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.scene.control.Alert;
-import modelo.Setor;
-import util.AlertBox;
-
 /**
- *
  * @author arthur
  */
 public class SetorDAO extends Database {
 
     public void create(Setor setor) {
         open();
-        String query = "INSERT INTO setor(nome) VALUES (?);";
+        String query = "INSERT INTO setor(nomea) VALUES (?);";
         try {
             PreparedStatement pst = connection.prepareStatement(query);
             pst.setString(1, setor.getNome());
             pst.executeUpdate();
         } catch (SQLException e) {
-            new AlertBox("Erro ao criar o setor! ", "Erro", new Alert(Alert.AlertType.ERROR));
-            System.err.println("Erro ao criar o setor! " + e.getMessage());
+            new AlertBox("Erro ao criar o setor! \n " + e.getMessage(), "Erro", new Alert(Alert.AlertType.ERROR));
         } finally {
             close();
         }
@@ -39,7 +37,7 @@ public class SetorDAO extends Database {
             pst.setInt(1, setor.getId());
             pst.executeUpdate();
         } catch (SQLException e) {
-            System.err.println("Erro ao deletar a material " + setor.getId() + ":" + e.getMessage());
+            new AlertBox("Erro ao deletar a material! \n " + e.getMessage(), "Erro", new Alert(Alert.AlertType.ERROR));
         } finally {
             close();
         }
@@ -54,7 +52,7 @@ public class SetorDAO extends Database {
             pst.setInt(2, setor.getId());
             pst.executeUpdate();
         } catch (SQLException e) {
-            System.err.println("Erro ao atualizar o setor: " + setor.getId() + e.getMessage());
+            new AlertBox("Erro ao atualizar o setor: " + setor.getId() + e.getMessage(), "Erro", new Alert(Alert.AlertType.ERROR));
         } finally {
             close();
         }
@@ -75,7 +73,7 @@ public class SetorDAO extends Database {
             }
 
         } catch (SQLException e) {
-            System.err.println("Erro ao listar os materiais:" + e.getMessage());
+            new AlertBox("Erro ao listar os setores! \n " + e.getMessage(), "Erro", new Alert(Alert.AlertType.ERROR));
         } finally {
             close();
         }
@@ -85,7 +83,7 @@ public class SetorDAO extends Database {
     public Setor findById(int id) {
         open();
         Setor setor = new Setor();
-        String query = "SELECT * FROM setor WHERE id = ?;";
+        String query = "SELECT * FROM setor1 WHERE id = ?;";
         try {
             PreparedStatement pst = connection.prepareStatement(query);
             pst.setInt(1, id);
@@ -96,7 +94,7 @@ public class SetorDAO extends Database {
             }
 
         } catch (SQLException e) {
-            System.err.println("Erro ao procurar setor: " + id + e.getMessage());
+            new AlertBox("Erro ao procurar setor: " + id + e.getMessage(), "Erro", new Alert(Alert.AlertType.ERROR));
         } finally {
             close();
         }
