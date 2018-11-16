@@ -23,7 +23,7 @@
             <HBox alignment="CENTER">
                <children>
                   <MaterialDesignIconView fill="#505050" glyphName="ACCOUNT_CIRCLE" size="28" wrappingWidth="31.0" />
-                  <Label text="Arthur Ribeiro">
+                  <Label fx:id="txtUsuario" text="Arthur Ribeiro">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>

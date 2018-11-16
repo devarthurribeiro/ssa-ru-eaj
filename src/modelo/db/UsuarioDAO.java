@@ -5,11 +5,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import modelo.Setor;
 import modelo.Usuario;
 
 /**
- *
  * @author arthur
  */
 public class UsuarioDAO extends Database {
@@ -126,4 +126,40 @@ public class UsuarioDAO extends Database {
         return usuario;
     }
 
+    public Usuario login(String email, String senha) {
+        String query = "SELECT * FROM usuario WHERE email = ? and senha = ?";
+        Usuario usuario = new Usuario();
+        ;
+
+        try {
+            open();
+            PreparedStatement pst = connection.prepareStatement(query);
+            pst.setString(1, email);
+            pst.setString(2, senha);
+
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                int id = rs.getInt("id");
+                String nome = rs.getString("nome");
+                String telefone = rs.getString("telefone");
+                boolean admin = rs.getBoolean("admin");
+                Setor setor = Setor.findById(rs.getInt("setorId"));
+
+                usuario.setId(id);
+                usuario.setNome(nome);
+                usuario.setEmail(email);
+                usuario.setSenha(senha);
+                usuario.setTelefone(telefone);
+                usuario.setAdmin(admin);
+                usuario.setSetor(setor);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Erro ao efetuar login: " + e.getMessage());
+        } finally {
+            close();
+        }
+        return usuario;
+    }
 }

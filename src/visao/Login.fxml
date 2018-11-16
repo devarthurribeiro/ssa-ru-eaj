@@ -26,7 +26,7 @@
       <HBox>
          <children>
             <MaterialDesignIconView fill="#505050" glyphName="ACCOUNT" size="24" wrappingWidth="30.0" />
-            <JFXTextField focusColor="#88c057" labelFloat="true" promptText="Usuário" unFocusColor="#88c057" HBox.hgrow="ALWAYS">
+            <JFXTextField fx:id="txtEmail" focusColor="#88c057" labelFloat="true" promptText="Usuário" unFocusColor="#88c057" HBox.hgrow="ALWAYS">
                <font>
                   <Font size="14.0" />
                </font>
@@ -36,7 +36,7 @@
       <HBox>
          <children>
             <MaterialDesignIconView fill="#505050" glyphName="LOCK" size="24" wrappingWidth="30.0" />
-            <JFXTextField focusColor="#88c057" labelFloat="true" promptText="Senha" unFocusColor="#88c057" HBox.hgrow="ALWAYS">
+            <JFXTextField fx:id="txtSenha" focusColor="#88c057" labelFloat="true" promptText="Senha" unFocusColor="#88c057" HBox.hgrow="ALWAYS">
                <font>
                   <Font size="14.0" />
                </font>

@@ -116,4 +116,8 @@ public class Usuario {
     public static Usuario findById(int id) {
         return dao.findById(id);
     }
+
+    public static Usuario login(String email, String senha) {
+        return dao.login(email, senha);
+    }
 }

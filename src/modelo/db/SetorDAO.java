@@ -83,7 +83,7 @@ public class SetorDAO extends Database {
     public Setor findById(int id) {
         open();
         Setor setor = new Setor();
-        String query = "SELECT * FROM setor1 WHERE id = ?;";
+        String query = "SELECT * FROM setor WHERE id = ?;";
         try {
             PreparedStatement pst = connection.prepareStatement(query);
             pst.setInt(1, id);
