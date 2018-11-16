@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 /**
- * @author ONILDO
+ * @author ONILDO, Arthur Ribeiro
  */
 public class ControleListaSetores implements Initializable {
     @FXML
