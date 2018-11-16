@@ -1,6 +1,7 @@
 package controle;
 
 import com.itextpdf.text.pdf.PdfPTable;
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,18 +19,20 @@ import javafx.stage.WindowEvent;
 import modelo.Setor;
 import util.Report;
 
+import javafx.scene.input.KeyEvent;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
- *
  * @author ONILDO
  */
 public class ControleListaSetores implements Initializable {
     @FXML
     private TableView<Setor> tabela;
-
+    @FXML
+    private JFXTextField txtBusca;
     @FXML
     private void cadastrar(ActionEvent event) throws IOException {
         Parent parent = FXMLLoader.load(getClass().getResource("/visao/CadastroSetor.fxml"));
@@ -39,7 +42,7 @@ public class ControleListaSetores implements Initializable {
     @FXML
     private void editar() throws IOException {
         Setor setor = tabela.getSelectionModel().getSelectedItem();
-        FXMLLoader loader = new  FXMLLoader(getClass().getResource("/visao/CadastroSetor.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/CadastroSetor.fxml"));
         Parent parent = loader.load();
         ControleCadastrarSetor controller = loader.getController();
         controller.setSetor(setor);
@@ -50,7 +53,7 @@ public class ControleListaSetores implements Initializable {
     private void remover() {
         Setor setor = tabela.getSelectionModel().getSelectedItem();
         setor.delete();
-        listarSetores();
+        listarSetores(Setor.all());
     }
 
     @FXML
@@ -71,7 +74,8 @@ public class ControleListaSetores implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        listarSetores();
+        busca();
+        listarSetores(Setor.all());
     }
 
     public void abrirCadastro(Parent parent, String titulo) {
@@ -84,17 +88,33 @@ public class ControleListaSetores implements Initializable {
         stage.setOnHiding(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
-                listarSetores();
+                listarSetores(Setor.all());
             }
         });
         stage.show();
     }
 
-    public void listarSetores() {
-        ObservableList<Setor> lista = FXCollections.observableArrayList(Setor.all());
+    public void listarSetores(List<Setor> setores) {
+        ObservableList<Setor> lista = FXCollections.observableArrayList(setores);
         tabela.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("id"));
         tabela.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("nome"));
         tabela.setItems(lista);
+    }
+
+    private void busca() {
+        txtBusca.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+
+                if (txtBusca.getLength() > 1) {
+                    System.out.println("Buscar");
+                    listarSetores(Setor.findByName(txtBusca.getText()));
+                }else {
+                    listarSetores(Setor.all());
+                }
+
+            }
+        });
     }
 
 }

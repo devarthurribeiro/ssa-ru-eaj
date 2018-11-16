@@ -80,6 +80,29 @@ public class SetorDAO extends Database {
         return setorList;
     }
 
+    public ArrayList<Setor> findByName(String nome) {
+        open();
+        ArrayList<Setor> setorList = new ArrayList<>();
+        String query = "SELECT * FROM setor WHERE nome ILIKE ?;";
+        try {
+            PreparedStatement pst = connection.prepareStatement(query);
+            pst.setString(1, "%"+nome+"%");
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String n = rs.getString("nome").trim();
+                Setor setor = new Setor(id, n);
+                setorList.add(setor);
+            }
+
+        } catch (SQLException e) {
+            new AlertBox("Erro ao procurar setor: " + nome + e.getMessage(), "Erro", new Alert(Alert.AlertType.ERROR));
+        } finally {
+            close();
+        }
+        return setorList;
+    }
+
     public Setor findById(int id) {
         open();
         Setor setor = new Setor();

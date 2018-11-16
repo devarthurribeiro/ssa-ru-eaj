@@ -1,12 +1,11 @@
 package modelo;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import modelo.db.SetorDAO;
 
 /**
- *
  * @author Arthur Ribeiro
  */
 public class Setor {
@@ -57,6 +56,10 @@ public class Setor {
 
     public void delete() {
         dao.delete(this);
+    }
+
+    public static ArrayList<Setor> findByName(String n) {
+        return dao.findByName(n);
     }
 
     public static Setor findById(int id) {

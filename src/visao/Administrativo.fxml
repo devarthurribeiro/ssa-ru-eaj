@@ -70,7 +70,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="ListaMaterial" alignment="TOP_LEFT" onAction="#abrirTela" prefHeight="42.0" prefWidth="250.0" styleClass="side-menu-item" text=" Alimentos" textFill="DARKSLATEGRAY">
+            <JFXButton fx:id="ListaAlimentos" alignment="TOP_LEFT" onAction="#abrirTela" prefHeight="42.0" prefWidth="250.0" styleClass="side-menu-item" text=" Alimentos" textFill="DARKSLATEGRAY">
                <font>
                   <Font size="16.0" />
                </font>

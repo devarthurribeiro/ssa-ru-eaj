@@ -40,7 +40,7 @@
       <HBox VBox.vgrow="ALWAYS">
          <children>
             <FontAwesomeIconView fill="#505050" glyphName="SEARCH" size="24" wrappingWidth="30.285715103149414" />
-            <JFXTextField focusColor="#00c552" labelFloat="true" prefHeight="26.0" prefWidth="588.0" promptText="Pesquisar..." HBox.hgrow="ALWAYS" />
+            <JFXTextField fx:id="txtBusca" focusColor="#00c552" labelFloat="true" prefHeight="26.0" prefWidth="588.0" promptText="Pesquisar..." HBox.hgrow="ALWAYS" />
          </children>
       </HBox>
       <TableView fx:id="tabela" prefHeight="471.0" prefWidth="625.0" stylesheets="@table.css">
