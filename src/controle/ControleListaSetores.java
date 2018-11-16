@@ -13,13 +13,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import modelo.Setor;
 import util.Report;
 
-import javafx.scene.input.KeyEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -33,6 +33,7 @@ public class ControleListaSetores implements Initializable {
     private TableView<Setor> tabela;
     @FXML
     private JFXTextField txtBusca;
+
     @FXML
     private void cadastrar(ActionEvent event) throws IOException {
         Parent parent = FXMLLoader.load(getClass().getResource("/visao/CadastroSetor.fxml"));
@@ -94,27 +95,24 @@ public class ControleListaSetores implements Initializable {
         stage.show();
     }
 
+    private void busca() {
+        txtBusca.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                if (txtBusca.getLength() > 1) {
+                    listarSetores(Setor.findByName(txtBusca.getText()));
+                } else {
+                    listarSetores(Setor.all());
+                }
+            }
+        });
+    }
+
     public void listarSetores(List<Setor> setores) {
         ObservableList<Setor> lista = FXCollections.observableArrayList(setores);
         tabela.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("id"));
         tabela.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("nome"));
         tabela.setItems(lista);
-    }
-
-    private void busca() {
-        txtBusca.setOnKeyReleased(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-
-                if (txtBusca.getLength() > 1) {
-                    System.out.println("Buscar");
-                    listarSetores(Setor.findByName(txtBusca.getText()));
-                }else {
-                    listarSetores(Setor.all());
-                }
-
-            }
-        });
     }
 
 }
