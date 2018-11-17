@@ -24,7 +24,7 @@
             <Label fx:id="txtUsuario" text="Arthur Ribeiro" />
             <Label fx:id="txtSetor" text="Suporte - TI" />
             <Pane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
-            <JFXButton buttonType="RAISED" prefHeight="28.0" prefWidth="100.0" styleClass="btn" text="Sair" textFill="#4d4d4d">
+            <JFXButton buttonType="RAISED" onAction="#sair" prefHeight="28.0" prefWidth="100.0" styleClass="btn" text="Sair" textFill="#4d4d4d">
                <graphic>
                   <MaterialDesignIconView fill="#4d4d4d" glyphName="CLOSE_CIRCLE" size="18" />
                </graphic>
@@ -85,16 +85,16 @@
                         </VBox>
                         <VBox alignment="CENTER" spacing="16.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <TableView fx:id="tabelaItens" prefHeight="398.0" prefWidth="437.0" VBox.vgrow="ALWAYS">
+                              <TableView fx:id="tabelaItens" prefHeight="398.0" prefWidth="437.0" stylesheets="@table.css" VBox.vgrow="ALWAYS">
                                 <columns>
-                                  <TableColumn prefWidth="50.0" text="Item" />
-                                  <TableColumn prefWidth="160.0" text="Quantidade" />
+                                  <TableColumn prefWidth="95.0" text="Item" />
+                                  <TableColumn prefWidth="99.0" text="Quantidade" />
                                 </columns>
                                  <columnResizePolicy>
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                  </columnResizePolicy>
                               </TableView>
-                              <JFXButton buttonType="RAISED" prefHeight="28.0" prefWidth="191.0" text="Remover" textFill="WHITE">
+                              <JFXButton buttonType="RAISED" onAction="#removerItem" prefHeight="28.0" prefWidth="191.0" text="Remover" textFill="WHITE">
                                  <styleClass>
                                     <String fx:value="btn" />
                                     <String fx:value="btn-danger" />

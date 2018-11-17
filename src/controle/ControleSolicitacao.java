@@ -41,6 +41,7 @@ public class ControleSolicitacao implements Initializable {
     private Label txtUsuario;
     @FXML
     private Label txtSetor;
+
     @FXML
     private void adicionarItem() {
         if (!cbAlimentos.getSelectionModel().isEmpty()) {
@@ -52,7 +53,7 @@ public class ControleSolicitacao implements Initializable {
             if (index >= 0) {
                 itemA = itensSolicitcao.get(index);
                 itemA.setQuantidade(itemA.getQuantidade() + qtd);
-            }else {
+            } else {
                 itensSolicitcao.add(itemA);
             }
 
@@ -62,6 +63,23 @@ public class ControleSolicitacao implements Initializable {
             new AlertBox("Selecione o item! \n ", "Erro", new Alert(Alert.AlertType.WARNING));
         }
     }
+
+    @FXML
+    private void removerItem() {
+        if (!tabelaItens.getSelectionModel().isEmpty()) {
+            int index = tabelaItens.getSelectionModel().getSelectedIndex();
+            itensSolicitcao.remove(index);
+            tabelaItens.refresh();
+        } else {
+            new AlertBox("Selecione o item! \n ", "Erro", new Alert(Alert.AlertType.WARNING));
+        }
+    }
+
+    @FXML
+    public void sair() {
+        System.exit(0);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         listarAlimentos();
@@ -69,6 +87,7 @@ public class ControleSolicitacao implements Initializable {
         tabelaItens.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("quantidade"));
         tabelaItens.setItems(itensSolicitcao);
     }
+
     private void listarAlimentos() {
         ObservableList<Alimento> listaAlimentos = FXCollections.observableArrayList(Alimento.all());
         cbAlimentos.setItems(listaAlimentos);
