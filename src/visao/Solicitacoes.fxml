@@ -16,14 +16,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<HBox prefHeight="431.0" prefWidth="701.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.ControleSolicitacao">
+<HBox prefHeight="431.0" prefWidth="701.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.ControleSolicitacao">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="194.0" spacing="16.0">
          <children>
             <MaterialDesignIconView fill="#939393fa" glyphName="ACCOUNT_CIRCLE" size="68" />
-            <Label text="Arthur Ribeiro" />
-            <Label text="Suporte - TI" />
+            <Label fx:id="txtUsuario" text="Arthur Ribeiro" />
+            <Label fx:id="txtSetor" text="Suporte - TI" />
             <Pane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
             <JFXButton buttonType="RAISED" prefHeight="28.0" prefWidth="100.0" styleClass="btn" text="Sair" textFill="#4d4d4d">
                <graphic>
@@ -44,7 +43,7 @@
             <content>
                   <VBox>
                      <children>
-                        <TableView prefHeight="341.0" prefWidth="507.0" stylesheets="@table.css" VBox.vgrow="ALWAYS">
+                        <TableView fx:id="tabelaSolicitacaoes" prefHeight="341.0" prefWidth="507.0" stylesheets="@table.css" VBox.vgrow="ALWAYS">
                           <columns>
                             <TableColumn prefWidth="75.0" text="Codigo" />
                             <TableColumn prefWidth="75.0" text="Data" />
@@ -68,9 +67,9 @@
                      <children>
                         <VBox alignment="TOP_RIGHT" spacing="16.0">
                            <children>
-                              <JFXComboBox prefHeight="26.0" prefWidth="488.0" promptText="Item" />
-                              <JFXTextField promptText="Quantidade" />
-                              <JFXButton buttonType="RAISED" prefHeight="16.0" prefWidth="120.0" text="Adicionar" textFill="WHITE">
+                              <JFXComboBox fx:id="cbAlimentos" prefHeight="26.0" prefWidth="488.0" promptText="Item" />
+                              <JFXTextField fx:id="txtQuantidade" promptText="Quantidade" text="1" />
+                              <JFXButton fx:id="btnAdd" buttonType="RAISED" onAction="#adicionarItem" prefHeight="16.0" prefWidth="120.0" text="Adicionar" textFill="WHITE">
                                  <styleClass>
                                     <String fx:value="btn-success" />
                                     <String fx:value="btn" />
@@ -86,7 +85,7 @@
                         </VBox>
                         <VBox alignment="CENTER" spacing="16.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <TableView prefHeight="398.0" prefWidth="437.0" VBox.vgrow="ALWAYS">
+                              <TableView fx:id="tabelaItens" prefHeight="398.0" prefWidth="437.0" VBox.vgrow="ALWAYS">
                                 <columns>
                                   <TableColumn prefWidth="50.0" text="Item" />
                                   <TableColumn prefWidth="160.0" text="Quantidade" />

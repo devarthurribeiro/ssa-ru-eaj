@@ -57,6 +57,11 @@ public class Alimento {
         return dao.all();
     }
 
+    @Override
+    public String toString() {
+        return descricao;
+    }
+
     public void save() {
         if (id != 0) {
             dao.update(this);

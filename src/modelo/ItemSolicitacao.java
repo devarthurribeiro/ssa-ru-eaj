@@ -1,56 +1,67 @@
 package modelo;
 
+import modelo.db.ItemSolicitacaoDAO;
+
+import java.util.Objects;
+
 /**
  *
  * @author arthur
  */
 public class ItemSolicitacao {
 
-    private int solicitacaoId;
-    private int alimentoId;
-    private float quantidade;
-    private boolean atendio;
+    private Alimento item;
+    private Solicitacao solicitacao;
+    private int quantidade;
+    private boolean atendido;
+    private ItemSolicitacaoDAO dao = new ItemSolicitacaoDAO();
 
     public ItemSolicitacao() {
     }
 
-    public ItemSolicitacao(int solicitacaoId, int alimentoId, float quantidade, boolean atendio) {
-        this.solicitacaoId = solicitacaoId;
-        this.alimentoId = alimentoId;
+    public ItemSolicitacao(Alimento item, Solicitacao solicitacao, int quantidade) {
+        this.item = item;
+        this.solicitacao = solicitacao;
         this.quantidade = quantidade;
-        this.atendio = atendio;
     }
 
-    public boolean isAtendio() {
-        return atendio;
+    public Alimento getItem() {
+        return item;
     }
 
-    public void setAtendio(boolean atendio) {
-        this.atendio = atendio;
+    public void setItem(Alimento item) {
+        this.item = item;
     }
 
-    public int getSolicitacaoId() {
-        return solicitacaoId;
+    public Solicitacao getSolicitacao() {
+        return solicitacao;
     }
 
-    public void setSolicitacaoId(int solicitacaoId) {
-        this.solicitacaoId = solicitacaoId;
+    public void setSolicitacao(Solicitacao solicitacao) {
+        this.solicitacao = solicitacao;
     }
 
-    public int getAlimentoId() {
-        return alimentoId;
-    }
-
-    public void setAlimentoId(int alimentoId) {
-        this.alimentoId = alimentoId;
-    }
-
-    public float getQuantidade() {
+    public int getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(float quantidade) {
+    public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
 
+    public boolean isAtendido() {
+        return atendido;
+    }
+
+    public void setAtendido(boolean atendido) {
+        this.atendido = atendido;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ItemSolicitacao that = (ItemSolicitacao) o;
+        return Objects.equals(item, that.item);
+    }
 }

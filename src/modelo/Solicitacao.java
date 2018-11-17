@@ -18,7 +18,7 @@ public class Solicitacao {
     private Date data;
     private String observacao;
     private boolean arquivada;
-    private List<Alimento> Alimentos = new ArrayList<Alimento>();
+    private List<ItemSolicitacao> itens = new ArrayList<ItemSolicitacao>();
 
     private SolicitacaoDAO dao = new SolicitacaoDAO();
 
@@ -90,12 +90,12 @@ public class Solicitacao {
         this.arquivada = arquivada;
     }
 
-    public List<Alimento> getAlimentos() {
-        return Alimentos;
+    public List<ItemSolicitacao> getItens() {
+        return itens;
     }
 
-    public void setAlimentos(List<Alimento> Alimentos) {
-        this.Alimentos = Alimentos;
+    public void setItens(List<ItemSolicitacao> ItemSolicitacao) {
+        this.itens = ItemSolicitacao;
     }
 
 }
