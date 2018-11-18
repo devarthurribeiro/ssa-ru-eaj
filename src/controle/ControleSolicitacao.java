@@ -18,6 +18,7 @@ import util.AlertBox;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -73,6 +74,21 @@ public class ControleSolicitacao implements Initializable {
         } else {
             new AlertBox("Selecione o item! \n ", "Erro", new Alert(Alert.AlertType.WARNING));
         }
+    }
+
+    @FXML
+    private void finalizarSolicitacao() {
+        solicitacao.setSetor(usuarioLogado.getSetor());
+        solicitacao.setUsuario(usuarioLogado);
+        solicitacao.save();
+        for (ItemSolicitacao item : itensSolicitcao) {
+            item.save();
+        }
+        solicitacao.setItens(itensSolicitcao);
+        new AlertBox("Solicitação enviada! \n ", "Sucesso", new Alert(Alert.AlertType.INFORMATION));
+        solicitacao = new Solicitacao();
+        itensSolicitcao.removeAll(itensSolicitcao);
+        tabelaItens.refresh();
     }
 
     @FXML

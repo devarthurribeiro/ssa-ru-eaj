@@ -5,7 +5,6 @@ import modelo.db.ItemSolicitacaoDAO;
 import java.util.Objects;
 
 /**
- *
  * @author arthur
  */
 public class ItemSolicitacao {
@@ -63,5 +62,13 @@ public class ItemSolicitacao {
         if (o == null || getClass() != o.getClass()) return false;
         ItemSolicitacao that = (ItemSolicitacao) o;
         return Objects.equals(item, that.item);
+    }
+
+    public void save() {
+        if (false) {
+            //dao.update(this);
+        } else {
+            dao.create(this);
+        }
     }
 }

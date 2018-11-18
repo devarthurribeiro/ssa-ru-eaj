@@ -44,6 +44,9 @@
                   <VBox>
                      <children>
                         <TableView fx:id="tabelaSolicitacaoes" prefHeight="341.0" prefWidth="507.0" stylesheets="@table.css" VBox.vgrow="ALWAYS">
+                          <placeholder>
+                            <Label text="Nenhuma solicitação!" />
+                          </placeholder>
                           <columns>
                             <TableColumn prefWidth="75.0" text="Codigo" />
                             <TableColumn prefWidth="75.0" text="Data" />
@@ -86,6 +89,9 @@
                         <VBox alignment="CENTER" spacing="16.0" HBox.hgrow="ALWAYS">
                            <children>
                               <TableView fx:id="tabelaItens" prefHeight="398.0" prefWidth="437.0" stylesheets="@table.css" VBox.vgrow="ALWAYS">
+                                <placeholder>
+                                      <Label text="Nenhum item selecionado!" />
+                                </placeholder>
                                 <columns>
                                   <TableColumn prefWidth="95.0" text="Item" />
                                   <TableColumn prefWidth="99.0" text="Quantidade" />
@@ -101,6 +107,15 @@
                                  </styleClass>
                                  <graphic>
                                     <MaterialDesignIconView fill="WHITE" glyphName="DELETE" size="18" />
+                                 </graphic>
+                              </JFXButton>
+                              <JFXButton buttonType="RAISED" onAction="#finalizarSolicitacao" prefHeight="28.0" prefWidth="191.0" text="Enviar solicitaçao" textFill="WHITE">
+                                 <styleClass>
+                                    <String fx:value="btn" />
+                                    <String fx:value="btn-success" />
+                                 </styleClass>
+                                 <graphic>
+                                    <MaterialDesignIconView fill="WHITE" glyphName="SEND" size="18" />
                                  </graphic>
                               </JFXButton>
                            </children>

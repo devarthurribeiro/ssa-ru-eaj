@@ -98,4 +98,12 @@ public class Solicitacao {
         this.itens = ItemSolicitacao;
     }
 
+    public void save() {
+        if (id != 0) {
+            dao.update(this);
+        } else {
+            dao.create(this);
+        }
+    }
+
 }

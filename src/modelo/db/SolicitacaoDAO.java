@@ -3,29 +3,36 @@ package modelo.db;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 import modelo.Setor;
 import modelo.Solicitacao;
 import modelo.Usuario;
 
 /**
- *
  * @author arthur
  */
 public class SolicitacaoDAO extends Database {
 
     public void create(Solicitacao solicitacao) {
         open();
-        String query = "INSERT INTO solicitacao(data, usuarioId, setorId, observacao) VALUES (?,?,?,?);";
+        String query = "INSERT INTO solicitacao(data, \"usuarioId\", \"setorId\", observacao) VALUES (?,?,?,?);";
         try {
-            PreparedStatement pst = connection.prepareStatement(query);
-            pst.setDate(1, (java.sql.Date) new Date());
+            PreparedStatement pst = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            pst.setDate(1, java.sql.Date.valueOf(LocalDate.now()));
             pst.setInt(2, solicitacao.getUsuario().getId());
             pst.setInt(3, solicitacao.getSetor().getId());
             pst.setString(4, solicitacao.getObservacao());
             pst.executeUpdate();
+            ResultSet rs = pst.getGeneratedKeys();
+            if (rs.next()) {
+                int id = rs.getInt(1);
+                solicitacao.setId(id);
+            }
         } catch (SQLException e) {
             System.err.println("Erro ao criar solicitacao! " + e.getMessage());
         } finally {
