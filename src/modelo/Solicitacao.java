@@ -7,7 +7,6 @@ import java.util.Date;
 import java.util.List;
 
 /**
- *
  * @author Arthur Ribeiro
  */
 public class Solicitacao {
@@ -20,7 +19,7 @@ public class Solicitacao {
     private boolean arquivada;
     private List<ItemSolicitacao> itens = new ArrayList<ItemSolicitacao>();
 
-    private SolicitacaoDAO dao = new SolicitacaoDAO();
+    private static SolicitacaoDAO dao = new SolicitacaoDAO();
 
     public Solicitacao() {
     }
@@ -105,5 +104,17 @@ public class Solicitacao {
             dao.create(this);
         }
     }
+
+    public static List<Solicitacao> all() {
+        return dao.all();
+    }
+
+    public static Solicitacao findById(int id) {
+        return dao.findById(id);
+    }
+    public static List<Solicitacao> findByUsuario(Usuario usuario) {
+        return dao.findByUsuario(usuario);
+    }
+
 
 }

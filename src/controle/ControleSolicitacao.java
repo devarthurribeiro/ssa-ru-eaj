@@ -2,14 +2,15 @@ package controle;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 import modelo.Alimento;
 import modelo.ItemSolicitacao;
 import modelo.Solicitacao;
@@ -17,6 +18,7 @@ import modelo.Usuario;
 import util.AlertBox;
 
 import java.net.URL;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -34,6 +36,10 @@ public class ControleSolicitacao implements Initializable {
     private ObservableList<ItemSolicitacao> itensSolicitcao = FXCollections.observableArrayList();
     @FXML
     private TableView<ItemSolicitacao> tabelaItens;
+    @FXML
+    private TableView<Solicitacao> tabelaSolicitacaoes;
+    @FXML
+    private TableColumn status;
     @FXML
     private JFXComboBox<Alimento> cbAlimentos;
     @FXML
@@ -109,8 +115,25 @@ public class ControleSolicitacao implements Initializable {
         cbAlimentos.setItems(listaAlimentos);
     }
 
+    private void listarSolicitacao() {
+        ObservableList<Solicitacao> s = FXCollections.observableArrayList(Solicitacao.findByUsuario(usuarioLogado));
+        tabelaSolicitacaoes.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("id"));
+        tabelaSolicitacaoes.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("data"));
+        tabelaSolicitacaoes.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("setor"));
+        status.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Solicitacao, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Solicitacao, String> coluna) {
+                SimpleStringProperty property = new SimpleStringProperty();
+                property.setValue(coluna.getValue().isArquivada() ? "Atendida" : "Em aberto");
+                return property;
+            }
+        });
+        tabelaSolicitacaoes.setItems(s);
+
+    }
+
     public void setUsuario(Usuario u) {
         usuarioLogado = u;
+        listarSolicitacao();
         txtUsuario.setText(u.getNome());
         txtSetor.setText(u.getSetor().getNome());
     }

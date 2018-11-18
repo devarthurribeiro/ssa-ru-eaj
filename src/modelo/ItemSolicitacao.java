@@ -2,6 +2,7 @@ package modelo;
 
 import modelo.db.ItemSolicitacaoDAO;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -13,7 +14,7 @@ public class ItemSolicitacao {
     private Solicitacao solicitacao;
     private int quantidade;
     private boolean atendido;
-    private ItemSolicitacaoDAO dao = new ItemSolicitacaoDAO();
+    private static ItemSolicitacaoDAO dao = new ItemSolicitacaoDAO();
 
     public ItemSolicitacao() {
     }
@@ -70,5 +71,9 @@ public class ItemSolicitacao {
         } else {
             dao.create(this);
         }
+    }
+
+    public static List<ItemSolicitacao> itemSolicitacaosBySolicitacao(Solicitacao solicitacao) {
+        return dao.itemSolicitacaosBySolicitacao(solicitacao);
     }
 }

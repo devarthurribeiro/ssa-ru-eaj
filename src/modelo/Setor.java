@@ -42,6 +42,11 @@ public class Setor {
         this.nome = nome;
     }
 
+    @Override
+    public String toString() {
+        return nome;
+    }
+
     public static List<Setor> all() {
         return dao.all();
     }

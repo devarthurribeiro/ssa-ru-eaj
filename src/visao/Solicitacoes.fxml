@@ -51,7 +51,7 @@
                             <TableColumn prefWidth="75.0" text="Codigo" />
                             <TableColumn prefWidth="75.0" text="Data" />
                               <TableColumn prefWidth="75.0" text="Setor" />
-                              <TableColumn prefWidth="75.0" text="Status" />
+                              <TableColumn fx:id="status" prefWidth="75.0" text="Status" />
                           </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

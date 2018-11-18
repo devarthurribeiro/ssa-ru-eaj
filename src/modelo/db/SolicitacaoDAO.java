@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import modelo.ItemSolicitacao;
 import modelo.Setor;
 import modelo.Solicitacao;
 import modelo.Usuario;
@@ -82,8 +83,10 @@ public class SolicitacaoDAO extends Database {
                 Usuario usuario = Usuario.findById(rs.getInt("UsuarioId"));
                 String observacao = rs.getString("observacao");
                 Date data = rs.getDate("data");
-                boolean disponivel = rs.getBoolean("disponivel");
-                Solicitacao m = new Solicitacao(id, setor, usuario, data, observacao, disponivel);
+                boolean arquivada = rs.getBoolean("arquivada");
+                Solicitacao m = new Solicitacao(id, setor, usuario, data, observacao, arquivada);
+                List<ItemSolicitacao> itens = ItemSolicitacao.itemSolicitacaosBySolicitacao(m);
+                m.setItens(itens);
                 solicitacaoList.add(m);
             }
 
@@ -117,6 +120,34 @@ public class SolicitacaoDAO extends Database {
             close();
         }
         return solicitacao;
+    }
+
+    public List<Solicitacao> findByUsuario(Usuario usuario) {
+        open();
+        ArrayList<Solicitacao> solicitacaoList = new ArrayList<>();
+        String query = "SELECT * FROM solicitacao WHERE \"usuarioId\" = ?;";
+        try {
+            PreparedStatement pst = connection.prepareStatement(query);
+            pst.setInt(1, usuario.getId());
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                Setor setor = Setor.findById(rs.getInt("setorId"));
+                String observacao = rs.getString("observacao");
+                Date data = rs.getDate("data");
+                boolean arquivada = rs.getBoolean("arquivada");
+                Solicitacao m = new Solicitacao(id, setor, usuario, data, observacao, arquivada);
+                List<ItemSolicitacao> itens = ItemSolicitacao.itemSolicitacaosBySolicitacao(m);
+                m.setItens(itens);
+                solicitacaoList.add(m);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Erro ao listar as solicitacaos:" + e.getMessage());
+        } finally {
+            close();
+        }
+        return solicitacaoList;
     }
 
 }

@@ -42,7 +42,6 @@ public class ControleLogin implements Initializable {
         if (!email.isEmpty() && !senha.isEmpty()) {
             Usuario usuario = Usuario.login(email, senha);
             logado = (usuario.getEmail() == email);
-
             if (logado) {
                 Stage satge = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 if (usuario.isAdmin()) abrirAdmin(usuario, satge);

@@ -3,12 +3,12 @@ package modelo.db;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javafx.scene.control.Alert;
-import modelo.Alimento;
-import modelo.ItemSolicitacao;
-import modelo.Solicitacao;
+import modelo.*;
 import util.AlertBox;
 
 /**
@@ -30,5 +30,32 @@ public class ItemSolicitacaoDAO extends Database {
         } finally {
             close();
         }
+    }
+
+    public List<ItemSolicitacao> itemSolicitacaosBySolicitacao(Solicitacao s) {
+        List<ItemSolicitacao> lista = new ArrayList<>();
+        open();
+        try {
+            String query = "SELECT * FROM \"itensSolicitacao\" WHERE  = \"solicitacaoId\" = ?;";
+            PreparedStatement pst = connection.prepareStatement(query);
+            pst.setInt(1, s.getId());
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+                Alimento alimento = Alimento.findById(rs.getInt("alimentoId"));
+                Solicitacao solicitacao = Solicitacao.findById(rs.getInt("solicitacaoId"));
+                int quantidade = rs.getInt("quantidade");
+                boolean atendido = rs.getBoolean("atendido");
+                ItemSolicitacao item = new ItemSolicitacao(alimento, solicitacao, quantidade);
+
+                lista.add(item);
+            }
+
+        } catch (SQLException e) {
+
+        } finally {
+            close();
+        }
+        return lista;
     }
 }
