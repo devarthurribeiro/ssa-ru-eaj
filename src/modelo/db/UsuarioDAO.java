@@ -12,8 +12,8 @@ import modelo.Usuario;
 /**
  * @author arthur
  */
-public class UsuarioDAO extends Database {
-
+public class UsuarioDAO extends Database implements Dao<Usuario> {
+    @Override
     public void create(Usuario usuario) {
         open();
         String query = "INSERT INTO usuario(nome, email, senha, telefone, admin, setorId) VALUES (?,?,?,?,?,?);";
@@ -33,6 +33,7 @@ public class UsuarioDAO extends Database {
         }
     }
 
+    @Override
     public void delete(Usuario usuario) {
         open();
         String query = "DELETE FROM usuario WHERE id = ?;";
@@ -47,6 +48,7 @@ public class UsuarioDAO extends Database {
         }
     }
 
+    @Override
     public void update(Usuario usuario) {
         open();
         String query = "UPDATE usuario SET nome = ?, email = ?, senha = ?, telefone = ?, admin = ?, setorId = ? WHERE id = ?;";
@@ -66,6 +68,7 @@ public class UsuarioDAO extends Database {
         }
     }
 
+    @Override
     public List<Usuario> all() {
         open();
         ArrayList<Usuario> usuarioList = new ArrayList<>();
@@ -93,6 +96,7 @@ public class UsuarioDAO extends Database {
         return usuarioList;
     }
 
+    @Override
     public Usuario findById(int id) {
         open();
         Usuario usuario = new Usuario();
