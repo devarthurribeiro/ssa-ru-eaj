@@ -13,8 +13,9 @@ import java.util.List;
 /**
  * @author arthur
  */
-public class SetorDAO extends Database {
+public class SetorDAO extends Database implements Dao<Setor> {
 
+    @Override
     public void create(Setor setor) {
         open();
         String query = "INSERT INTO setor(nome) VALUES (?);";
@@ -29,6 +30,7 @@ public class SetorDAO extends Database {
         }
     }
 
+    @Override
     public void delete(Setor setor) {
         open();
         String query = "DELETE FROM setor WHERE id = ?;";
@@ -43,6 +45,7 @@ public class SetorDAO extends Database {
         }
     }
 
+    @Override
     public void update(Setor setor) {
         open();
         String query = "UPDATE setor SET nome = ? WHERE id = ?;";
@@ -58,6 +61,7 @@ public class SetorDAO extends Database {
         }
     }
 
+    @Override
     public List<Setor> all() {
         open();
         ArrayList<Setor> setorList = new ArrayList<>();
@@ -80,29 +84,7 @@ public class SetorDAO extends Database {
         return setorList;
     }
 
-    public ArrayList<Setor> findByName(String nome) {
-        open();
-        ArrayList<Setor> setorList = new ArrayList<>();
-        String query = "SELECT * FROM setor WHERE nome ILIKE ?;";
-        try {
-            PreparedStatement pst = connection.prepareStatement(query);
-            pst.setString(1, "%"+nome+"%");
-            ResultSet rs = pst.executeQuery();
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                String n = rs.getString("nome").trim();
-                Setor setor = new Setor(id, n);
-                setorList.add(setor);
-            }
-
-        } catch (SQLException e) {
-            new AlertBox("Erro ao procurar setor: " + nome + e.getMessage(), "Erro", new Alert(Alert.AlertType.ERROR));
-        } finally {
-            close();
-        }
-        return setorList;
-    }
-
+    @Override
     public Setor findById(int id) {
         open();
         Setor setor = new Setor();
@@ -122,6 +104,30 @@ public class SetorDAO extends Database {
             close();
         }
         return setor;
+    }
+
+
+    public ArrayList<Setor> findByName(String nome) {
+        open();
+        ArrayList<Setor> setorList = new ArrayList<>();
+        String query = "SELECT * FROM setor WHERE nome ILIKE ?;";
+        try {
+            PreparedStatement pst = connection.prepareStatement(query);
+            pst.setString(1, "%" + nome + "%");
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String n = rs.getString("nome").trim();
+                Setor setor = new Setor(id, n);
+                setorList.add(setor);
+            }
+
+        } catch (SQLException e) {
+            new AlertBox("Erro ao procurar setor: " + nome + e.getMessage(), "Erro", new Alert(Alert.AlertType.ERROR));
+        } finally {
+            close();
+        }
+        return setorList;
     }
 
 }
