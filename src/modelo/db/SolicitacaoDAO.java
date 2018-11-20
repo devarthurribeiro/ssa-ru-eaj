@@ -17,8 +17,8 @@ import modelo.Usuario;
 /**
  * @author arthur
  */
-public class SolicitacaoDAO extends Database {
-
+public class SolicitacaoDAO extends Database implements Dao<Solicitacao> {
+    @Override
     public void create(Solicitacao solicitacao) {
         open();
         String query = "INSERT INTO solicitacao(data, \"usuarioId\", \"setorId\", observacao) VALUES (?,?,?,?);";
@@ -41,6 +41,7 @@ public class SolicitacaoDAO extends Database {
         }
     }
 
+    @Override
     public void delete(Solicitacao solicitacao) {
         open();
         String query = "DELETE FROM solicitacao WHERE id = ?;";
@@ -55,6 +56,7 @@ public class SolicitacaoDAO extends Database {
         }
     }
 
+    @Override
     public void update(Solicitacao solicitacao) {
         open();
         String query = "UPDATE solicitacao SET arquivada = ?, observaocao = ? WHERE id = ?;";
@@ -70,6 +72,7 @@ public class SolicitacaoDAO extends Database {
         }
     }
 
+    @Override
     public List<Solicitacao> all() {
         open();
         ArrayList<Solicitacao> solicitacaoList = new ArrayList<>();
@@ -98,6 +101,7 @@ public class SolicitacaoDAO extends Database {
         return solicitacaoList;
     }
 
+    @Override
     public Solicitacao findById(int id) {
         open();
         Solicitacao solicitacao = new Solicitacao();
