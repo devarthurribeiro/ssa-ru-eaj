@@ -14,7 +14,7 @@ import util.AlertBox;
 /**
  * @author arthur
  */
-public class ItemSolicitacaoDAO extends Database {
+public class ItemSolicitacaoDAO extends Database implements Dao<ItemSolicitacao> {
     public void create(ItemSolicitacao itemSolicitacao) {
         open();
         try {
@@ -30,6 +30,26 @@ public class ItemSolicitacaoDAO extends Database {
         } finally {
             close();
         }
+    }
+
+    @Override
+    public void delete(ItemSolicitacao object) {
+
+    }
+
+    @Override
+    public void update(ItemSolicitacao object) {
+
+    }
+
+    @Override
+    public List<ItemSolicitacao> all() {
+        return null;
+    }
+
+    @Override
+    public ItemSolicitacao findById(int id) {
+        return null;
     }
 
     public List<ItemSolicitacao> itemSolicitacaosBySolicitacao(Solicitacao s) {
