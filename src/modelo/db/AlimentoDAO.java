@@ -5,14 +5,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import modelo.Alimento;
 
 /**
- *
  * @author arthur
  */
-public class AlimentoDAO extends Database {
-
+public class AlimentoDAO extends Database implements Dao<Alimento> {
+    @Override
     public void create(Alimento alimento) {
         open();
         String query = "INSERT INTO alimento(descricao) VALUES (?);";
@@ -27,6 +27,7 @@ public class AlimentoDAO extends Database {
         }
     }
 
+    @Override
     public void delete(Alimento alimento) {
         open();
         String query = "DELETE FROM alimento WHERE id = ?;";
@@ -35,12 +36,13 @@ public class AlimentoDAO extends Database {
             pst.setInt(1, alimento.getId());
             pst.executeUpdate();
         } catch (SQLException e) {
-            System.err.println("Erro ao deletar a alimento " + alimento.getId()+ ":" + e.getMessage());
+            System.err.println("Erro ao deletar a alimento " + alimento.getId() + ":" + e.getMessage());
         } finally {
             close();
         }
     }
 
+    @Override
     public void update(Alimento alimento) {
         open();
         String query = "UPDATE alimento SET descricao = ?, disponivel = ? WHERE id = ?;";
@@ -50,12 +52,13 @@ public class AlimentoDAO extends Database {
             pst.setBoolean(2, alimento.isDisponivel());
             pst.executeUpdate();
         } catch (SQLException e) {
-            System.err.println("Erro ao atualizar o materiais: " + alimento.getId()+ e.getMessage());
+            System.err.println("Erro ao atualizar o materiais: " + alimento.getId() + e.getMessage());
         } finally {
             close();
         }
     }
 
+    @Override
     public List<Alimento> all() {
         open();
         ArrayList<Alimento> alimentoList = new ArrayList<>();
@@ -79,6 +82,7 @@ public class AlimentoDAO extends Database {
         return alimentoList;
     }
 
+    @Override
     public Alimento findById(int id) {
         open();
         Alimento materail = new Alimento();
