@@ -6,7 +6,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.scene.control.Alert;
 import modelo.Alimento;
+import modelo.Setor;
+import modelo.Usuario;
+import util.AlertBox;
 
 /**
  * @author arthur
@@ -104,4 +108,27 @@ public class AlimentoDAO extends Database implements Dao<Alimento> {
         return materail;
     }
 
+    public ArrayList<Alimento> findByName(String n) {
+        open();
+        ArrayList<Alimento> lista = new ArrayList<>();
+        String query = "SELECT * FROM alimento WHERE descricao ILIKE ?;";
+        try {
+            PreparedStatement pst = connection.prepareStatement(query);
+            pst.setString(1, "%" + n + "%");
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String desc = rs.getString("descricao").trim();
+                boolean disponivel = rs.getBoolean("disponivel");
+                Alimento m = new Alimento(id, desc, disponivel);
+                lista.add(m);
+            }
+
+        } catch (SQLException e) {
+            new AlertBox("Erro ao procurar alimentos: " + n + e.getMessage(), "Erro", new Alert(Alert.AlertType.ERROR));
+        } finally {
+            close();
+        }
+        return lista;
+    }
 }

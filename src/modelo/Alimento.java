@@ -77,4 +77,9 @@ public class Alimento {
     public static Alimento findById(int id) {
         return dao.findById(id);
     }
+
+    public static List<Alimento> findByName(String n) {
+        return dao.findByName(n);
+    }
+
 }

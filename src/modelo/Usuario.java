@@ -1,5 +1,6 @@
 package modelo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import modelo.db.UsuarioDAO;
@@ -115,6 +116,10 @@ public class Usuario {
     
     public static Usuario findById(int id) {
         return dao.findById(id);
+    }
+
+    public static ArrayList<Usuario> findByName(String n) {
+        return dao.findByName(n);
     }
 
     public static Usuario login(String email, String senha) {

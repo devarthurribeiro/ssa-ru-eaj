@@ -6,8 +6,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.scene.control.Alert;
 import modelo.Setor;
 import modelo.Usuario;
+import util.AlertBox;
 
 /**
  * @author arthur
@@ -128,6 +130,34 @@ public class UsuarioDAO extends Database implements Dao<Usuario> {
             close();
         }
         return usuario;
+    }
+
+    public ArrayList<Usuario> findByName(String n) {
+        open();
+        ArrayList<Usuario> lista = new ArrayList<>();
+        String query = "SELECT * FROM usuario WHERE nome ILIKE ?;";
+        try {
+            PreparedStatement pst = connection.prepareStatement(query);
+            pst.setString(1, "%" + n + "%");
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String nome = rs.getString("nome");
+                String email = rs.getString("email");
+                String senha = rs.getString("senha");
+                String telefone = rs.getString("telefone");
+                boolean admin = rs.getBoolean("admin");
+                Setor s = Setor.findById(rs.getInt("setorId"));
+                Usuario u = new Usuario(nome, email, senha, telefone, admin, s);
+                lista.add(u);
+            }
+
+        } catch (SQLException e) {
+            new AlertBox("Erro ao procurar usuario: " + n + e.getMessage(), "Erro", new Alert(Alert.AlertType.ERROR));
+        } finally {
+            close();
+        }
+        return lista;
     }
 
     public Usuario login(String email, String senha) {
