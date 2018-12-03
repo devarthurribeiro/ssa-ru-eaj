@@ -19,10 +19,11 @@ public class AlimentoDAO extends Database implements Dao<Alimento> {
     @Override
     public void create(Alimento alimento) {
         open();
-        String query = "INSERT INTO alimento(descricao) VALUES (?);";
+        String query = "INSERT INTO alimento(descricao, disponivel) VALUES (?,?);";
         try {
             PreparedStatement pst = connection.prepareStatement(query);
             pst.setString(1, alimento.getDescricao());
+            pst.setBoolean(2, alimento.isDisponivel());
             pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println("Erro ao criar o porco! " + e.getMessage());
@@ -54,6 +55,7 @@ public class AlimentoDAO extends Database implements Dao<Alimento> {
             PreparedStatement pst = connection.prepareStatement(query);
             pst.setString(1, alimento.getDescricao());
             pst.setBoolean(2, alimento.isDisponivel());
+            pst.setInt(3, alimento.getId());
             pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println("Erro ao atualizar o materiais: " + alimento.getId() + e.getMessage());
