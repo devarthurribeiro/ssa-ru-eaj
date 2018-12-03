@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="550.0" prefWidth="681.0" spacing="24.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.ControleListaUsuarios">
+<VBox fx:id="container" prefHeight="550.0" prefWidth="681.0" spacing="24.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.ControleListaUsuarios">
    <children>
       <HBox VBox.vgrow="ALWAYS">
          <children>
@@ -26,7 +26,7 @@
                   </Label>
                </children>
             </Pane>
-            <JFXButton buttonType="RAISED" onAction="#abrirFormulario" prefHeight="28.0" prefWidth="113.0" text="Cadastrar" textFill="WHITE">
+            <JFXButton buttonType="RAISED" onAction="#cadastrar" prefHeight="28.0" prefWidth="113.0" text="Cadastrar" textFill="WHITE">
                <styleClass>
                   <String fx:value="btn-success" />
                   <String fx:value="btn" />
@@ -69,7 +69,7 @@
                   <MaterialDesignIconView fill="WHITE" glyphName="TABLE" size="18" />
                </graphic>
             </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="356.0" layoutY="24.0" prefHeight="28.0" prefWidth="105.0" text="Remover" textFill="WHITE">
+            <JFXButton buttonType="RAISED" layoutX="356.0" layoutY="24.0" onAction="#remover" prefHeight="28.0" prefWidth="105.0" text="Remover" textFill="WHITE">
                <styleClass>
                   <String fx:value="btn-danger" />
                   <String fx:value="btn" />
@@ -78,7 +78,7 @@
                   <MaterialDesignIconView fill="WHITE" glyphName="DELETE" size="18" />
                </graphic>
             </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="274.0" layoutY="24.0" prefHeight="28.0" prefWidth="105.0" text="Editar" textFill="WHITE">
+            <JFXButton buttonType="RAISED" layoutX="274.0" layoutY="24.0" onAction="#editar" prefHeight="28.0" prefWidth="105.0" text="Editar" textFill="WHITE">
                <styleClass>
                   <String fx:value="btn-success" />
                   <String fx:value="btn" />

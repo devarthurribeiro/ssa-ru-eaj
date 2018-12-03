@@ -27,7 +27,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 /**
- *
  * @author ONILDO
  */
 public class ControleListaAlimentos extends utilControle implements Initializable {
@@ -35,11 +34,13 @@ public class ControleListaAlimentos extends utilControle implements Initializabl
     private TableView<Alimento> tabela;
     @FXML
     private JFXTextField txtBusca;
+
     @FXML
     private void cadastrar(ActionEvent event) throws IOException {
         Parent parent = FXMLLoader.load(getClass().getResource("/visao/CadastroAlimento.fxml"));
         abrirCadastro(parent, "Novo usuário");
     }
+
     @FXML
     private void editar() throws IOException {
         Alimento alimento = tabela.getSelectionModel().getSelectedItem();
@@ -49,13 +50,14 @@ public class ControleListaAlimentos extends utilControle implements Initializabl
         controller.setAlimento(alimento);
         abrirCadastro(parent, "Editar alimento");
     }
+
     @FXML
     private void remover() {
         Alimento alimento = tabela.getSelectionModel().getSelectedItem();
         alimento.delete();
         listarAlimentos(Alimento.all());
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         busca();
@@ -98,5 +100,5 @@ public class ControleListaAlimentos extends utilControle implements Initializabl
         tabela.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("disponivel"));
         tabela.setItems(lista);
     }
-    
+
 }

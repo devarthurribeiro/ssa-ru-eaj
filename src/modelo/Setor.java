@@ -47,6 +47,24 @@ public class Setor {
         return nome;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Setor setor = (Setor) o;
+
+        if (id != setor.id) return false;
+        return nome != null ? nome.equals(setor.nome) : setor.nome == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (nome != null ? nome.hashCode() : 0);
+        return result;
+    }
+
     public static List<Setor> all() {
         return dao.all();
     }

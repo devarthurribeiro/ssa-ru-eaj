@@ -18,7 +18,7 @@ public class UsuarioDAO extends Database implements Dao<Usuario> {
     @Override
     public void create(Usuario usuario) {
         open();
-        String query = "INSERT INTO usuario(nome, email, senha, telefone, admin, setorId) VALUES (?,?,?,?,?,?);";
+        String query = "INSERT INTO usuario(nome, email, senha, telefone, admin, \"setorId\") VALUES (?,?,?,?,?,?);";
         try {
             PreparedStatement pst = connection.prepareStatement(query);
             pst.setString(1, usuario.getNome());
@@ -53,7 +53,7 @@ public class UsuarioDAO extends Database implements Dao<Usuario> {
     @Override
     public void update(Usuario usuario) {
         open();
-        String query = "UPDATE usuario SET nome = ?, email = ?, senha = ?, telefone = ?, admin = ?, setorId = ? WHERE id = ?;";
+        String query = "UPDATE usuario SET nome = ?, email = ?, senha = ?, telefone = ?, admin = ?, \"setorId\" = ? WHERE id = ?;";
         try {
             PreparedStatement pst = connection.prepareStatement(query);
             pst.setString(1, usuario.getNome());
@@ -62,6 +62,7 @@ public class UsuarioDAO extends Database implements Dao<Usuario> {
             pst.setString(4, usuario.getTelefone());
             pst.setBoolean(5, usuario.isAdmin());
             pst.setInt(6, usuario.getSetor().getId());
+            pst.setInt(7, usuario.getId());
             pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println("Erro ao atualizar o usuario: " + usuario.getId() + e.getMessage());
@@ -86,7 +87,7 @@ public class UsuarioDAO extends Database implements Dao<Usuario> {
                 String telefone = rs.getString("telefone");
                 boolean admin = rs.getBoolean("admin");
                 Setor s = Setor.findById(rs.getInt("setorId"));
-                Usuario u = new Usuario(nome, email, senha, telefone, admin, s);
+                Usuario u = new Usuario(id, nome, email, senha, telefone, admin, s);
                 usuarioList.add(u);
             }
 
