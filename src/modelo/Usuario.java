@@ -98,6 +98,11 @@ public class Usuario {
         this.setor = setor;
     }
 
+    @Override
+    public String toString() {
+        return nome;
+    }
+
     public static List<Usuario> all() {
         return dao.all();
     }

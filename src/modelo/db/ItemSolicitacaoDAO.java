@@ -56,7 +56,7 @@ public class ItemSolicitacaoDAO extends Database implements Dao<ItemSolicitacao>
         List<ItemSolicitacao> lista = new ArrayList<>();
         open();
         try {
-            String query = "SELECT * FROM \"itensSolicitacao\" WHERE  = \"solicitacaoId\" = ?;";
+            String query = "SELECT * FROM \"itensSolicitacao\" WHERE \"solicitacaoId\" = ?;";
             PreparedStatement pst = connection.prepareStatement(query);
             pst.setInt(1, s.getId());
             ResultSet rs = pst.executeQuery();
@@ -67,7 +67,7 @@ public class ItemSolicitacaoDAO extends Database implements Dao<ItemSolicitacao>
                 int quantidade = rs.getInt("quantidade");
                 boolean atendido = rs.getBoolean("atendido");
                 ItemSolicitacao item = new ItemSolicitacao(alimento, solicitacao, quantidade);
-
+                System.out.println("aqui");
                 lista.add(item);
             }
 

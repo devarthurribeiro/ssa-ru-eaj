@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="512.0" prefWidth="768.0" styleClass="bg-default" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.ControleAdministrativo">
+<BorderPane fx:id="borderpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="512.0" prefWidth="768.0" styleClass="bg-default" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.ControleAdministrativo">
    <left>
       <VBox accessibleRole="IMAGE_VIEW" cache="true" nodeOrientation="LEFT_TO_RIGHT" prefHeight="617.0" prefWidth="250.0" spacing="10.0" style="-fx-background-color: #fff;" BorderPane.alignment="CENTER">
          <children>
@@ -82,7 +82,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="Solicitacao" alignment="TOP_LEFT" onAction="#abrirTela" prefHeight="37.0" prefWidth="250.0" styleClass="side-menu-item" text=" Solicitações" textFill="DARKSLATEGRAY">
+            <JFXButton fx:id="ListaSolicitacao" alignment="TOP_LEFT" onAction="#abrirTela" prefHeight="37.0" prefWidth="250.0" styleClass="side-menu-item" text=" Solicitações" textFill="DARKSLATEGRAY">
                <font>
                   <Font size="16.0" />
                </font>
